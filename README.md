@@ -55,6 +55,7 @@ Some helpful links for the Arduino Mega Rev3:
     - This page includes the pinout PDF, which is also in this repository
 - [ATmega2560 data sheet](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/ATmega640-1280-1281-2560-2561-Datasheet-DS40002211A.pdf)
     - This is the MCU chip in the board
+- [AVR Instruction Set Manual](https://ww1.microchip.com/downloads/en/DeviceDoc/AVR-InstructionSet-Manual-DS40002198.pdf)
 
 Advanced:
 
