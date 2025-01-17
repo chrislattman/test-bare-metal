@@ -37,9 +37,18 @@ int main(void) {
 
     /* The built-in LED is mapped to the 7th bit of port B (PORTB7):
      * https://docs.arduino.cc/resources/pinouts/A000067-full-pinout.pdf
-     * Therefore, we want to set the 7th bit of the PORTB
-     * Data Direction Register (DDRB). This puts the pin (digital pin 13)
-     * corresponding to the LED in output mode. */
+     * Therefore, we want to set the 7th bit of the PORTB Data Direction
+     * Register (DDRB). This puts the pin (digital pin 13) corresponding
+     * to the LED in output mode.
+     *
+     * The line of code following this comment is equivalent to:
+     *
+     * (*(volatile uint8_t *)((0x04) + 0x20)) |= (1 << 7);
+     *
+     * This modifies the value of the memory-mapped register DDRB, which
+     * corresponds to memory location 0x04 + 0x20 = 0x24 (p.96 of the data
+     * sheet) by setting the 7th bit.
+     */
     DDRB |= _BV(DDB7);
 
     /* infinite loop */
