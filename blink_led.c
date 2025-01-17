@@ -11,15 +11,13 @@ static int usart_putc(char c, FILE *stream);
 
 static FILE outfile = FDEV_SETUP_STREAM(usart_putc, NULL, _FDEV_SETUP_WRITE);
 
-static int usart_putc(char c, FILE *stream)
-{
+static int usart_putc(char c, FILE *stream) {
     loop_until_bit_is_set(UCSR0A, UDRE0);   /* wait until transmit buffer is empty */
     UDR0 = (uint8_t)c;                      /* load the transmit buffer with the character */
     return c;
 }
 
-FILE* usart_init(void)
-{
+FILE* usart_init(void) {
     /* configure USART0 baud rate */
     UBRR0H = 0;
     UBRR0L = (uint8_t) (F_CPU / 4 / BAUD_RATE - 1) / 2;
