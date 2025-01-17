@@ -23,8 +23,10 @@ void setup() {
 void loop() {
     digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
     delay(1000);                      // wait one second
+    Serial.println("Hello");          // print "Hello\n"
     digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
     delay(1000);                      // wait one second
+    Serial.println("World!");         // print "World!\n"
 }
 ```
 
