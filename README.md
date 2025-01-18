@@ -60,3 +60,6 @@ Some helpful links for the Arduino Mega Rev3:
 Advanced:
 
 - I had to change the flags to `avrdude` to use the AVRISP mkII programmer instead of the default Arduino bootloader using the STK500 v1 protocol, and with that disabling auto-erase for flash memory (`-D`)
+- I looked into using Rust for this project. There's good news and bad news:
+    - The good news is that there appears to be community (unofficial) AVR support for at least the ATmega328 chip found in an Arduino Uno Rev3 (link [here](https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-3))
+    - The bad news is that it doesn't allow the Rust standard library `libstd` to load ("`no_std`"). This includes the Rust runtime, which enforces stack overflow protection (link [here](https://docs.rust-embedded.org/book/intro/no-std.html#the-libstd-runtime))
