@@ -5,6 +5,10 @@ default:
 deploy:
 	avrdude -F -V -D -p m2560 -c avrispmkII -P $(DEV) -b 115200 -U flash:w:blink_led.hex
 
+deploy_qemu:
+	# qemu-system-avr -machine mega2560 -bios blink_led.hex -nographic -serial tcp::5678,server=on,wait=off
+	# In another shell: telnet localhost 5678
+
 test:
 	avrdude -p m2560 -c avrispmkII -P $(DEV) -b 115200 -T "disasm -gL flash 0 -1" > recovered.S
 	avr-gcc -nostdlib -Wl,--section-start=.text=0x0000 -mmcu=atmega2560 -o recovered.elf recovered.S
