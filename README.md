@@ -4,7 +4,7 @@
 
 This code shows how to blink the LED for the Arduino Mega Rev3 on and off in 1 second intervals directly (in bare metal C), without the help of the Arduino IDE. In addition, it returns strings via USART0 through the serial line.
 
-To run the example, connect the board to your computer and run `make` then `make deploy DEV=<device>`, e.g. `make deploy DEV=/dev/cu.usbmodem143101` (you may have to run `avrdude` as root).
+To run the example, connect the board to your computer and run `make` then `make deploy DEV=<device>`, e.g. `make deploy DEV=/dev/tty.usbmodem143101` (you may have to run `avrdude` as root).
 
 To see the returned strings as they arrive, run `screen <device> 115200` (exit by pressing `Ctrl` + `A` + `K` and then `y`)
 
