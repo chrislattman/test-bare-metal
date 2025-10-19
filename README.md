@@ -6,7 +6,7 @@ This code shows how to blink the LED for the Arduino Mega Rev3 on and off in 1 s
 
 To run the example, connect the board to your computer and run `make` then `make deploy DEV=<device>`, e.g. `make deploy DEV=/dev/tty.usbmodem143101` (you may have to run `avrdude` as root).
 
-To see the returned strings as they arrive, run `screen <device> 115200` (exit by pressing `Ctrl` + `A` + `K` and then `y`)
+To see the returned strings as they arrive, run `screen <device> 115200` (exit by pressing `Ctrl` + `A` + `K`, release and then press `y`)
 
 - On Windows you can use [PuTTY](https://www.putty.org) to send and receive serial data (use `Ctrl + J` to send data)
 
