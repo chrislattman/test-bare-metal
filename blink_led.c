@@ -54,11 +54,15 @@ int main(void) {
     /* infinite loop */
     while (1) {
         PORTB |= _BV(PORTB7);   /* set PORTB7 to HIGH (turn on LED) */
-        _delay_ms(MS_DELAY);    /* wait 1 second */
-        puts("Hello");          /* print "Hello\n" to stdout (USARTO) */
+#ifndef TEST
+        _delay_ms(MS_DELAY);    /* wait 1 second (this doesn't work in QEMU) */
+#endif
+        printf("Hello\r\n");    /* print "Hello\n" to stdout (USARTO) */
         PORTB &= ~_BV(PORTB7);  /* unset PORTB7 to LOW (turn off LED) */
-        _delay_ms(MS_DELAY);    /* wait 1 second */
-        puts("World!");         /* print "World!\n" to stdout (USART0) */
+#ifndef TEST
+        _delay_ms(MS_DELAY);    /* wait 1 second (this doesn't work in QEMU) */
+#endif
+        printf("World!\r\n");   /* print "World!\n" to stdout (USART0) */
     }
 
     return 0;
