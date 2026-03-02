@@ -1,5 +1,4 @@
 {
-    // This launch configuration uses the Native Debug extension
     "version": "0.2.0",
     "configurations": [
         {

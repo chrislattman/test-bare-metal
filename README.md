@@ -61,6 +61,7 @@ Some helpful links for the Arduino Mega Rev3:
 
 Advanced:
 
+- The `.vscode/launch.json` launch configuration uses the Native Debug extension
 - I had to change the flags to `avrdude` to use the AVRISP mkII programmer instead of the default Arduino bootloader using the STK500 v1 protocol, and with that disabling auto-erase for flash memory (`-D`) and also not performing a chip erase at the start (`-e`)
 - I looked into using Rust for this project. There's good news and bad news:
     - The good news is that there appears to be community (unofficial) AVR support for at least the ATmega328 chip found in an Arduino Uno Rev3 (link [here](https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-3))
