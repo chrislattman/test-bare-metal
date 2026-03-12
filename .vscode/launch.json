@@ -9,7 +9,7 @@
             "cwd": "${workspaceFolder}",
             "target": "localhost:1234",
             "remote": true,
-            "gdbpath": "/usr/local/bin/gdb"
+            "gdbpath": "/usr/bin/gdb"
         }
     ]
 }

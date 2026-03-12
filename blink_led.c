@@ -1,4 +1,5 @@
 #include <avr/io.h>
+// #include <avr/iom2560.h>
 #include <util/delay.h>
 #include <stdio.h>
 
@@ -25,7 +26,7 @@ FILE* usart_init(void) {
     /* set USART0 control and status registers (UCSR0x) */
     UCSR0A |= _BV(U2X0);        /* double the transmission speed */
     UCSR0B |= _BV(TXEN0);       /* enable the USART0 transmitter */
-    UCSR0C = SERIAL_FORMAT_8N1; /* guarantees character siZe to be 8 bits
+    UCSR0C = SERIAL_FORMAT_8N1; /* guarantees character size to be 8 bits
                                  * regardless of UCSZn2 value */
 
     return &outfile;
@@ -53,12 +54,12 @@ int main(void) {
 
     /* infinite loop */
     while (1) {
-        PORTB |= _BV(PORTB7);   /* set PORTB7 to HIGH (turn on LED) */
+        PORTB |= _BV(PB7);      /* set PORTB7 to HIGH (turn on LED) */
 #ifndef TEST
         _delay_ms(MS_DELAY);    /* wait 1 second (this doesn't work in QEMU) */
 #endif
         printf("Hello\r\n");    /* print "Hello\n" to stdout (USARTO) */
-        PORTB &= ~_BV(PORTB7);  /* unset PORTB7 to LOW (turn off LED) */
+        PORTB &= ~_BV(PB7);     /* unset PORTB7 to LOW (turn off LED) */
 #ifndef TEST
         _delay_ms(MS_DELAY);    /* wait 1 second (this doesn't work in QEMU) */
 #endif
