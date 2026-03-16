@@ -1,5 +1,5 @@
 
-blink_led.elf:     file format elf32-avr
+hello_world.elf:     file format elf32-avr
 
 
 Disassembly of section .text:
