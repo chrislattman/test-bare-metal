@@ -7,16 +7,11 @@
 #define BAUD_RATE           115200UL
 #define SERIAL_FORMAT_8N1   0x06
 
+// These two functions essentially define a UART driver
 FILE* usart_init(void);
 static int usart_putc(char c, FILE *stream);
 
 static FILE outfile = FDEV_SETUP_STREAM(usart_putc, NULL, _FDEV_SETUP_WRITE);
-
-static int usart_putc(char c, FILE *stream) {
-    loop_until_bit_is_set(UCSR0A, UDRE0);   /* wait until transmit buffer is empty */
-    UDR0 = (uint8_t)c;                      /* load the transmit buffer with the character */
-    return c;
-}
 
 FILE* usart_init(void) {
     /* configure USART0 baud rate */
@@ -32,8 +27,17 @@ FILE* usart_init(void) {
     return &outfile;
 }
 
+static int usart_putc(char c, FILE *stream) {
+    loop_until_bit_is_set(UCSR0A, UDRE0);   /* wait until transmit buffer is empty */
+    UDR0 = (uint8_t)c;                      /* load the transmit buffer with the character */
+    return c;
+}
+
 int main(void) {
-    /* stdout is mapped to USART0 */
+    /* stdout is mapped to USART0
+     * the printf calls in this function are handled by an on-board ATmega16U2 USB-TTL chip
+     * that exposes a virtual COM port to the PC
+     */
     stdout = usart_init();
 
     /* The built-in LED is mapped to the 7th bit of port B (PORTB7):
