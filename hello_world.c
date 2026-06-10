@@ -1,5 +1,6 @@
 #include <avr/io.h>
 // #include <avr/iom2560.h>
+#include <avr/wdt.h>
 #include <util/delay.h>
 #include <stdio.h>
 
@@ -56,6 +57,10 @@ int main(void) {
      */
     DDRB |= _BV(DDB7);
 
+    /* Set up the watchdog timer */
+    wdt_disable();
+    wdt_enable(WDTO_4S);
+
     /* infinite loop */
     while (1) {
         PORTB |= _BV(PB7);      /* set PORTB7 to HIGH (turn on LED) */
@@ -68,6 +73,7 @@ int main(void) {
         _delay_ms(MS_DELAY);    /* wait 1 second (this doesn't work in QEMU) */
 #endif
         printf("World!\r\n");   /* print "World!\n" to stdout (USART0) */
+        wdt_reset();            /* feed the watchdog */
     }
 
     return 0;
