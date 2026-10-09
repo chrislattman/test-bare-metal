@@ -1,8 +1,8 @@
-# Bare metal C on Arduino Mega Rev3
+# Bare metal C on Arduino Mega 2560 Rev3
 
 ![](blinking.gif)
 
-This code shows how to blink the LED for the Arduino Mega Rev3 on and off in 1 second intervals directly (in bare metal C), without the help of the Arduino IDE. In addition, it returns strings via USART0 through the serial line. It programs flash using `avrdude`.
+This code shows how to blink the LED for the Arduino Mega 2560 Rev3 on and off in 1 second intervals directly (in bare metal C), without the help of the Arduino IDE. In addition, it returns strings via USART0 through the serial line. It programs flash using `avrdude`.
 
 To run the example, connect the board to your computer and run `make` then `make deploy DEV=<device>`, e.g. `make deploy DEV=/dev/tty.usbmodem143101` (you may have to run `avrdude` as root). Use `make test` to disable the `_delay_ms()` function during debugging.
 
@@ -51,7 +51,7 @@ Linux (Ubuntu/Debian):
 sudo apt update && sudo apt install gcc-avr avr-libc binutils-avr gdb-multiarch avrdude
 ```
 
-Some helpful links for the Arduino Mega Rev3:
+Some helpful links for the Arduino Mega 2560 Rev3:
 
 - [https://docs.arduino.cc/hardware/mega-2560/](https://docs.arduino.cc/hardware/mega-2560/)
     - This page includes the pinout PDF, which is also in this repository
