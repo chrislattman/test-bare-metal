@@ -17,8 +17,8 @@ deploy_qemu:
 test_qemu:
 	qemu-system-avr -machine mega2560 -bios hello_world.elf -nographic -serial telnet:localhost:5678,server=on,wait=off -S -s
 	# To specify a different GDB port, replace -s with -gdb tcp:localhost:<PORT>
-	# In another shell:
-	# gdb -q hello_world.elf
+	# In another shell (replace gdb-multiarch with avr-gdb if using macOS):
+	# gdb-multiarch -q hello_world.elf
 	# (gdb) target remote localhost:1234
 	# (gdb) break main
 	# (gdb) continue

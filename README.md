@@ -42,13 +42,13 @@ macOS (using Homebrew):
 
 ```bash
 brew tap osx-cross/avr
-brew install avr-gcc avr-binutils avrdude # avr-libc included with avr-gcc
+brew install avr-gcc avr-binutils avr-gdb avrdude # avr-libc included with avr-gcc
 ```
 
 Linux (Ubuntu/Debian):
 
 ```bash
-sudo apt update && sudo apt install gcc-avr avr-libc binutils-avr avrdude
+sudo apt update && sudo apt install gcc-avr avr-libc binutils-avr gdb-multiarch avrdude
 ```
 
 Some helpful links for the Arduino Mega Rev3:
