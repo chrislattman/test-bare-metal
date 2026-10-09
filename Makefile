@@ -5,16 +5,16 @@ default:
 test:
 	avr-gcc -Og -ggdb3 -DTEST -DF_CPU=16000000UL -mmcu=atmega2560 -o hello_world.elf hello_world.c
 
-deploy:
+deploy: default
 	avrdude -F -V -D -p m2560 -c avrispmkII -P $(DEV) -b 115200 -U flash:w:hello_world.elf
 
-deploy_qemu:
+deploy_qemu: default
 	qemu-system-avr -machine mega2560 -bios hello_world.elf -nographic -serial telnet:localhost:5678,server=on,wait=off
 	# In another shell: telnet localhost 5678
 	# Quit qemu: (qemu) quit
 	# Quit telnet: Ctrl + ] -> telnet> quit
 
-test_qemu:
+test_qemu: test
 	qemu-system-avr -machine mega2560 -bios hello_world.elf -nographic -serial telnet:localhost:5678,server=on,wait=off -S -s
 	# To specify a different GDB port, replace -s with -gdb tcp:localhost:<PORT>
 	# In another shell (replace gdb-multiarch with avr-gdb if using macOS):
