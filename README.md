@@ -63,9 +63,6 @@ Advanced:
 
 - The `.vscode/launch.json` launch configuration uses the Native Debug extension
 - I had to change the flags to `avrdude` to use the AVRISP mkII programmer instead of the default Arduino bootloader using the STK500 v1 protocol, and with that disabling auto-erase for flash memory (`-D`) and also not performing a chip erase at the start (`-e`)
-- I looked into using Rust for this project. There's good news and bad news:
-    - The good news is that there appears to be community (unofficial) AVR support for at least the ATmega328 chip found in an Arduino Uno Rev3 (link [here](https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-3))
-    - The bad news is that it doesn't allow the Rust standard library `libstd` to be loaded ("`no_std`"). This includes the Rust runtime, which enforces stack overflow protection (link [here](https://docs.rust-embedded.org/book/intro/no-std.html#the-libstd-runtime))
 - This example shows how to extract the contents of the flash memory with `avrdude`
     - Normally you wouldn't need to pass `-L` to `disasm`, but there was an issue with undefined labels
     - It also shows that `avr-objcopy` is unnecessary, as the microcontroller programmer AVRISP mkII understands the ELF file format
