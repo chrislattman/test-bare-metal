@@ -1,5 +1,2 @@
-*.elf
-*.hex
-*.o
 .DS_Store
-*.S
+build/
