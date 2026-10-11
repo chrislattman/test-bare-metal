@@ -64,12 +64,12 @@ int main(void) {
     /* infinite loop */
     while (1) {
         PORTB |= _BV(PB7);      /* set PORTB7 to HIGH (turn on LED) */
-#ifndef TEST
+#ifdef NDEBUG
         _delay_ms(MS_DELAY);    /* wait 1 second (this doesn't work in QEMU) */
 #endif
         printf("Hello\r\n");    /* print "Hello\n" to stdout (USARTO) */
         PORTB &= ~_BV(PB7);     /* unset PORTB7 to LOW (turn off LED) */
-#ifndef TEST
+#ifdef NDEBUG
         _delay_ms(MS_DELAY);    /* wait 1 second (this doesn't work in QEMU) */
 #endif
         printf("World!\r\n");   /* print "World!\n" to stdout (USART0) */
