@@ -7,7 +7,7 @@ This code shows how to blink the LED for the Arduino Mega 2560 Rev3 on and off i
 To run the example, connect the board to your computer and run:
 
 ```bash
-cmake -B build -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/avr-gcc -DDEV=<device>   # e.g. -DDEV=/dev/tty.usbmodem143101
+cmake -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/avr-gcc -S . -B build # add -DDEV=<device> if not /dev/ttyACM0
 cmake --build build --target deploy
 ```
 

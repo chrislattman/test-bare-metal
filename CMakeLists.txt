@@ -4,7 +4,7 @@ project(hello_world)
 
 set(MCU atmega2560 CACHE STRING "Target MCU (passed to -mmcu)")
 set(F_CPU 16000000UL CACHE STRING "CPU clock frequency")
-set(DEV "" CACHE STRING "Serial device of the programmer, used by the deploy target")
+set(DEV /dev/ttyACM0 CACHE STRING "Serial device of the programmer, used by the deploy target")
 option(TEST "Build for debugging: -Og -ggdb3 and disable _delay_ms()" OFF)
 
 add_executable(hello_world hello_world.c)
