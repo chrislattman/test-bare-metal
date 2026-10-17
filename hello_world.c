@@ -59,7 +59,9 @@ int main(void) {
 
     /* Set up the watchdog timer */
     wdt_disable();
+#ifdef NDEBUG
     wdt_enable(WDTO_4S);
+#endif
 
     /* infinite loop */
     while (1) {
@@ -73,7 +75,9 @@ int main(void) {
         _delay_ms(MS_DELAY);    /* wait 1 second (this doesn't work in QEMU) */
 #endif
         printf("World!\r\n");   /* print "World!\n" to stdout (USART0) */
+#ifdef NDEBUG
         wdt_reset();            /* feed the watchdog */
+#endif
     }
 
     return 0;
