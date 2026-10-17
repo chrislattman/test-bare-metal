@@ -11,7 +11,7 @@ cmake -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/avr-gcc -S . -B build # add -DDEV=<de
 cmake --build build --target deploy
 ```
 
-(you may have to run `avrdude` as root). Reconfigure with `cmake -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/avr-gcc -DCMAKE_BUILD_TYPE=Debug -S . -B build` (and back with `-DCMAKE_BUILD_TYPE=MinSizeRel`) to build with `-Og -ggdb3` and, since `NDEBUG` is then undefined, disable the `_delay_ms()` function during debugging.
+(you may have to run `avrdude` as root). Reconfigure with `cmake -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/avr-gcc -DCMAKE_BUILD_TYPE=Debug -S . -B build` (and back with `-DCMAKE_BUILD_TYPE=MinSizeRel`) to build with `-Og -ggdb3` and, since `NDEBUG` is then undefined, it disables the `_delay_ms()` function during debugging.
 
 Other targets: `qemu` runs the firmware in `qemu-system-avr` with the serial port on `telnet localhost 5678`, and `qemu_debug` does the same but halts and waits for GDB on `localhost:1234` (use it with `-DCMAKE_BUILD_TYPE=Debug`). See `CMakeLists.txt` for details.
 
