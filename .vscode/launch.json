@@ -10,6 +10,18 @@
             "target": "localhost:1234",
             "remote": true,
             "gdbpath": "/usr/bin/gdb-multiarch"
+        },
+        {
+            "name": "C: Remote Attach (cppdbg)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/hello_world.elf",
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb-multiarch",
+            "miDebuggerServerAddress": "localhost:1234"
         }
     ]
 }
