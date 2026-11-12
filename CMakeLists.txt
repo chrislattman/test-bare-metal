@@ -30,9 +30,15 @@ add_custom_target(deploy
 # In another shell: telnet localhost 5678
 # Quit qemu: (qemu) quit
 # Quit telnet: Ctrl + ] -> telnet> quit
+set(QEMU_COMMAND
+    qemu-system-avr
+    -machine mega2560
+    -bios ${ELF}
+    -nographic
+    -serial telnet:localhost:5678,server=on,wait=off)
+
 add_custom_target(qemu
-    COMMAND qemu-system-avr -machine mega2560 -bios ${ELF} -nographic
-            -serial telnet:localhost:5678,server=on,wait=off
+    COMMAND ${QEMU_COMMAND}
     DEPENDS hello_world
     USES_TERMINAL
     VERBATIM
@@ -47,8 +53,7 @@ add_custom_target(qemu
 #   (gdb) continue
 # In another shell: telnet localhost 5678
 add_custom_target(qemu_debug
-    COMMAND qemu-system-avr -machine mega2560 -bios ${ELF} -nographic
-            -serial telnet:localhost:5678,server=on,wait=off -S -s
+    COMMAND ${QEMU_COMMAND} -S -s
     DEPENDS hello_world
     USES_TERMINAL
     VERBATIM
