@@ -70,8 +70,8 @@ Some helpful links for the Arduino Mega 2560 Rev3:
 
 Advanced:
 
-- The `.vscode/launch.json` file has two equivalent configurations that attach to `qemu_debug` on `localhost:1234`: `C: Remote Attach` uses the Native Debug extension (`type: gdb`), and `C: Remote Attach (cppdbg)` uses the Microsoft C/C++ extension (`type: cppdbg`)
-    - Despite `request: launch`, the `cppdbg` configuration doesn't start a local program; `miDebuggerServerAddress` makes it run `target remote localhost:1234` in `gdb-multiarch`
+- The `C: Remote Attach` configuration in `.vscode/launch.json` uses the Microsoft C/C++ extension (`type: cppdbg`) to attach to `qemu_debug` on `localhost:1234`
+    - Despite `request: launch`, it doesn't start a local program; `miDebuggerServerAddress` makes it run `target remote localhost:1234` in `gdb-multiarch`
     - `targetArchitecture` is left out because cpptools doesn't have an AVR value; GDB works out the architecture from the ELF file
 - I had to change the flags to `avrdude` to use the AVRISP mkII programmer instead of the default Arduino bootloader using the STK500 v1 protocol, and with that disabling auto-erase for flash memory (`-D`) and also not performing a chip erase at the start (`-e`)
 - This example shows how to extract the contents of the flash memory with `avrdude`

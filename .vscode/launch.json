@@ -3,16 +3,6 @@
     "configurations": [
         {
             "name": "C: Remote Attach",
-            "type": "gdb",
-            "request": "attach",
-            "executable": "${workspaceFolder}/build/hello_world.elf",
-            "cwd": "${workspaceFolder}",
-            "target": "localhost:1234",
-            "remote": true,
-            "gdbpath": "/usr/bin/gdb-multiarch"
-        },
-        {
-            "name": "C: Remote Attach (cppdbg)",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/hello_world.elf",
