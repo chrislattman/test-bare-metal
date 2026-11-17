@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.27)
 
+set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_LIST_DIR}/cmake/avr-gcc.cmake CACHE FILEPATH "CMake toolchain file")
+
 project(hello_world)
 
 set(MCU atmega2560 CACHE STRING "Target MCU (passed to -mmcu)")
